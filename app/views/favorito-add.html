@@ -1,0 +1,33 @@
+<div class="favorito-box" *ngIf="favorito">
+
+	<h1>{{titleSection}}</h1>
+
+	<!-- asi declaro formulario de angular
+		cuando se lance el evento ngSubmit vamos a lanzar el metodo onSubmite -->
+	<form #formFavorito="ngForm" (ngSubmit)="onSubmit()">
+		<label>Titulo:</label>
+		<p>
+			<!-- title es el nombre del campo que tengo en la entidad -->
+			<input type="text" name="title" #title="ngModel" [(ngModel)]="favorito.title"
+			required />
+			<span *ngIf="title.touched && !title.valid">El titulo no es correcto</span>
+		</p>
+		<label>Descripcion:</label>
+		<p>
+			<!-- description es el nombre del campo que tengo en la entidad -->
+			<textarea name="description" #description="ngModel" [(ngModel)]="favorito.description" required>
+			</textarea>
+			<span *ngIf="description.touched && !description.valid">La descripcion no es correcta</span>
+		</p>
+		<label>Url:</label>
+		<p>
+			<!-- url es el nombre del campo que tengo en la entidad -->
+			<input type="text" name="url" #url="ngModel" [(ngModel)]="favorito.url" required/>
+			<span *ngIf="url.touched && !url.valid">La url no es correcta</span>
+		</p>
+
+		<input type="submit" value="{{titleSection}}"/>
+
+	</form>
+
+</div>
